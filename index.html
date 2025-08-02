@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museo Constitucional de Cádiz | Recursos Educativos y Documentales 1812-2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Museo oficial de la Constitución de 1812. Recursos educativos, documentos históricos, visitas virtuales y archivo digital del legado constitucional gaditano.">
+    <meta name="keywords" content="Constitución 1812, Cádiz, Museo, Educación, Historia, Constitucionalismo, La Pepa">
+    
+    <style>
+        :root {
+            --museum-primary: #1a365d;
+            --museum-secondary: #2d5aa0;
+            --constitutional-gold: #d4af37;
+            --heritage-blue: #2563eb;
+            --document-cream: #faf7f2;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --accent-teal: #0d9488;
+            --warm-gray: #f5f5f4;
+            --shadow-museum: 0 10px 40px rgba(26, 54, 93, 0.1);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--document-cream);
+            overflow-x: hidden;
+        }
+
+        /* Header del Museo */
+        .museum-header {
+            background: linear-gradient(135deg, var(--museum-primary) 0%, var(--museum-secondary) 100%);
+            color: white;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .museum-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.05)"/><text x="10" y="50" font-family="serif" font-size="6" fill="rgba(255,255,255,0.03)">1812</text></svg>') repeat;
+        }
+
+        .header-top {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 0.8rem 0;
+            font-size: 0.9rem;
+        }
+
+        .header-top-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .museum-info {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .museum-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-main {
+            padding: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .museum-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--constitutional-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--museum-primary);
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-icon::before {
+            content: '🏛️';
+            position: absolute;
+            font-size: 2rem;
+        }
+
+        .museum-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .museum-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-header {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-header:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navegación */
+        .main-nav {
+            background: white;
+            box-shadow: var(--shadow-card);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 1.2rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--heritage-blue);
+            border-bottom-color: var(--constitutional-gold);
+        }
+
+        /* Contenido Principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero-section {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-museum);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--constitutional-gold), transparent);
+            opacity: 0.1;
+            border-radius: 0 0 0 200px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            color: var(--museum-primary);
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--warm-gray);
+            border-radius: 12px;
+            border-top: 4px solid var(--heritage-blue);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.6s forwards;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+        .stat-item:nth-child(4) { animation-delay: 0.8s; }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--heritage-blue);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Secciones de Recursos */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--heritage-blue);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .resources-grid .resource-card:nth-child(1) { animation-delay: 0.1s; }
+        .resources-grid .resource-card:nth-child(2) { animation-delay: 0.2s; }
+        .resources-grid .resource-card:nth-child(3) { animation-delay: 0.3s; }
+        .resources-grid .resource-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--constitutional-gold);
+            opacity: 0.1;
+            border-radius: 0 0 0 80px;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-museum);
+        }
+
+        .resource-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--heritage-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover .resource-icon {
+            transform: rotate(10deg) scale(1.1);
+            background: var(--constitutional-gold);
+        }
+
+        .resource-title {
+            font-size: 1.4rem;
+            color: var(--museum-primary);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .resource-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: var(--warm-gray);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .resource-link:hover {
+            background: var(--heritage-blue);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Sección Especial de Documentos */
+        .documents-section {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-museum);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--museum-primary);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .document-card {
+            background: var(--document-cream);
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .documents-grid .document-card:nth-child(1) { animation-delay: 0.1s; }
+        .documents-grid .document-card:nth-child(2) { animation-delay: 0.2s; }
+        .documents-grid .document-card:nth-child(3) { animation-delay: 0.3s; }
+        .documents-grid .document-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .document-card::before {
+            content: '📜';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .document-card:hover::before {
+            transform: rotate(15deg);
+        }
+
+        .document-card:hover {
+            border-color: var(--constitutional-gold);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-5px);
+        }
+
+        .document-title {
+            font-size: 1.3rem;
+            color: var(--museum-primary);
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .document-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .btn-download {
+            background: var(--heritage-blue);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .btn-download:hover {
+            background: var(--museum-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sección de Visita Virtual */
+        .virtual-tour {
+            background: linear-gradient(135deg, var(--museum-primary) 0%, var(--museum-secondary) 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .virtual-tour::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+        }
+
+        .tour-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tour-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .tour-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .tour-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tour-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .tour-feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-tour {
+            background: var(--constitutional-gold);
+            color: var(--museum-primary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-tour:hover {
+            background: #f5d503;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Nueva sección de eventos */
+        .events-section {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-museum);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            background: var(--warm-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .events-grid .event-card:nth-child(1) { animation-delay: 0.1s; }
+        .events-grid .event-card:nth-child(2) { animation-delay: 0.2s; }
+        .events-grid .event-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-date {
+            background: var(--heritage-blue);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .event-day {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .event-month {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-title {
+            font-size: 1.3rem;
+            color: var(--museum-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .event-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-event {
+            background: var(--constitutional-gold);
+            color: var(--museum-primary);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-event:hover {
+            background: #e0b82a;
+        }
+
+        /* Chat mejorado */
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .ai-toggle {
+            background: var(--heritage-blue);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ai-toggle:hover {
+            background: var(--museum-primary);
+            transform: scale(1.1);
+        }
+
+        .ai-chat {
+            width: 350px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: none;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.4s forwards;
+            border: 1px solid #e5e7eb;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+        }
+
+        .ai-chat.open {
+            display: block;
+        }
+
+        .ai-header {
+            background: var(--heritage-blue);
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-header h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .ai-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .ai-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: var(--warm-gray);
+        }
+
+        .ai-message {
+            display: flex;
+            max-width: 90%;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .ai-message.user {
+            align-self: flex-end;
+        }
+
+        .ai-message.bot {
+            align-self: flex-start;
+        }
+
+        .message-bubble {
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            white-space: pre-wrap;
+        }
+
+        .ai-message.user .message-bubble {
+            background: var(--heritage-blue);
+            color: white;
+            border-top-right-radius: 5px;
+        }
+
+        .ai-message.bot .message-bubble {
+            background: white;
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 5px;
+        }
+
+        .ai-input-area {
+            padding: 1rem;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .ai-input-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ai-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 24px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+
+        .ai-input:focus {
+            border-color: var(--heritage-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .ai-send {
+            background: var(--heritage-blue);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ai-send:hover {
+            background: var(--museum-primary);
+            transform: scale(1.1);
+        }
+
+        .ai-send:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .quick-question {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--heritage-blue);
+            border: none;
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-question:hover {
+            background: var(--heritage-blue);
+            color: white;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 2px;
+        }
+
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--heritage-blue);
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        .museum-footer {
+            background: var(--museum-primary);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--constitutional-gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--constitutional-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .museum-logo {
+                justify-content: center;
+            }
+
+            .header-actions {
+                justify-content: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .resources-grid,
+            .documents-grid,
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .hero-section,
+            .documents-section,
+            .events-section {
+                padding: 2rem;
+            }
+
+            .ai-chat {
+                width: 300px;
+                right: 10px;
+                bottom: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .museum-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-top-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                padding: 1rem;
+            }
+
+            .ai-chat {
+                width: calc(100% - 40px);
+                left: 20px;
+                right: 20px;
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header del Museo -->
+    <header class="museum-header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="museum-info">
+                    <span><i class="fas fa-clock"></i> Mar-Dom 10:00-18:00</span>
+                    <span><i class="fas fa-phone"></i> +34 956 224 765</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Plaza de San Antonio, Cádiz</span>
+                </div>
+                <div class="museum-info">
+                    <span><i class="fas fa-ticket-alt"></i> Entrada gratuita</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="header-content">
+                <div class="museum-logo">
+                    <div class="logo-icon">
+                        <!-- Escudo de Hércules -->
+                    </div>
+                    <div>
+                        <h1 class="museum-title">Museo Constitucional de Cádiz</h1>
+                        <p class="museum-subtitle">Fundación 1812 | Patrimonio Constitucional Español</p>
+                    </div>
+                </div>
+                
+                <div></div>
+                
+                <div class="header-actions">
+                    <a href="#visita-virtual" class="btn-header">
+                        <i class="fas fa-vr-cardboard"></i> Visita Virtual
+                    </a>
+                    <a href="#contacto" class="btn-header">
+                        <i class="fas fa-envelope"></i> Contacto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#colecciones">Colecciones</a></li>
+                <li><a href="#documentos">Documentos Históricos</a></li>
+                <li><a href="#educacion">Recursos Educativos</a></li>
+                <li><a href="#investigacion">Investigación</a></li>
+                <li><a href="#visitas">Visitas</a></li>
+                <li><a href="#exposiciones">Exposiciones</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Sección Hero -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <h2 class="hero-title">Cuna del Constitucionalismo Moderno</h2>
+                <p class="hero-description">
+                    El Museo Constitucional de Cádiz preserva y difunde el legado de la Constitución de 1812, 
+                    primera carta magna que estableció la soberanía nacional en el mundo hispánico. Descubre 
+                    213 años de historia constitucional que transformó 42 naciones.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1812</span>
+                        <span class="stat-label">Año de la Constitución</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">42</span>
+                        <span class="stat-label">Constituciones Influidas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5,000+</span>
+                        <span class="stat-label">Documentos Digitalizados</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">213</span>
+                        <span class="stat-label">Años de Legado</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos Educativos -->
+        <section id="educacion" class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="resource-title">Recursos para Educadores</h3>
+                <p class="resource-description">
+                    Materiales didácticos, guías de estudio y actividades interactivas para enseñar 
+                    la Constitución de 1812 en diferentes niveles educativos.
+                </p>
+                <div class="resource-links">
+                    <a href="https://www.congreso.es/web/guest/historia-constitucional" class="resource-link" target="_blank">
+                        <i class="fas fa-book"></i> Historia Constitucional
+                    </a>
+                    <a href="https://www.boe.es/biblioteca_juridica/abrir_pdf.php?id=PUB-DH-2012-61" class="resource-link" target="_blank">
+                        <i class="fas fa-puzzle-piece"></i> Documentos BOE
+                    </a>
+                    <a href="https://www.educacion.gob.es/teseo/" class="resource-link" target="_blank">
+                        <i class="fas fa-chalkboard-teacher"></i> Base Teseo
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-archive"></i>
+                </div>
+                <h3 class="resource-title">Archivo Digital</h3>
+                <p class="resource-description">
+                    Acceso completo a la colección digitalizada del museo: manuscritos originales, 
+                    actas de las Cortes, correspondencia y documentos históricos únicos.
+                </p>
+                <div class="resource-links">
+                    <a href="https://www.congreso.es/web/guest/historia-constitucional" class="resource-link" target="_blank">
+                        <i class="fas fa-search"></i> Archivo Congreso
+                    </a>
+                    <a href="https://www.bibliotecadigitalhispanica.bne.es/" class="resource-link" target="_blank">
+                        <i class="fas fa-download"></i> Biblioteca Nacional
+                    </a>
+                    <a href="https://www.cervantesvirtual.com/" class="resource-link" target="_blank">
+                        <i class="fas fa-eye"></i> Cervantes Virtual
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h3 class="resource-title">Centro de Investigación</h3>
+                <p class="resource-description">
+                    Apoyo a investigadores con acceso a fondos especiales, bases de datos académicas 
+                    y colaboración con universidades internacionales.
+                </p>
+                <div class="resource-links">
+                    <a href="https://dialnet.unirioja.es/" class="resource-link" target="_blank">
+                        <i class="fas fa-university"></i> Dialnet
+                    </a>
+                    <a href="https://scholar.google.es/" class="resource-link" target="_blank">
+                        <i class="fas fa-users"></i> Google Scholar
+                    </a>
+                    <a href="https://www.uca.es/" class="resource-link" target="_blank">
+                        <i class="fas fa-calendar"></i> Universidad de Cádiz
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="resource-title">Impacto Internacional</h3>
+                <p class="resource-description">
+                    Explora la influencia mundial de la Constitución de Cádiz en las constituciones 
+                    de América Latina, Europa y otros continentes.
+                </p>
+                <div class="resource-links">
+                    <a href="https://www.worldstatesmen.org/Spain.html" class="resource-link" target="_blank">
+                        <i class="fas fa-map-marked-alt"></i> World Statesmen
+                    </a>
+                    <a href="https://www.constitutionnet.org/" class="resource-link" target="_blank">
+                        <i class="fas fa-chart-line"></i> Constitution Net
+                    </a>
+                    <a href="https://www.dipucadiz.es/" class="resource-link" target="_blank">
+                        <i class="fas fa-handshake"></i> Diputación Cádiz
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentos Históricos -->
+        <section id="documentos" class="documents-section">
+            <div class="section-header">
+                <h2 class="section-title">Documentos Históricos Destacados</h2>
+                <p class="section-subtitle">
+                    Accede a los documentos originales que cambiaron la historia del constitucionalismo mundial
+                </p>
+            </div>
+
+            <div class="documents-grid">
+                <div class="document-card">
+                    <h3 class="document-title">Constitución Original de 1812</h3>
+                    <div class="document-meta">
+                        <span class="meta-item"><i class="fas fa-calendar"></i> 19 Marzo 1812</span>
+                        <span class="meta-item"><i class="fas fa-file-pdf"></i> PDF</span>
+                        <span class="meta-item"><i class="fas fa-language"></i> Español</span>
+                    </div>
+                    <p>Texto completo de la Constitución Política de la Monarquía Española. Edición facsímil del documento original conservado en el Congreso de los Diputados.</p>
+                    <a href="https://www.congreso.es/constitucion/ficheros/historicas/cons_1812.pdf" class="btn-download" target="_blank">
+                        <i class="fas fa-download"></i> Descargar Documento Oficial
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <h3 class="document-title">Actas de las Cortes de Cádiz</h3>
+                    <div class="document-meta">
+                        <span class="meta-item"><i class="fas fa-calendar"></i> 1810-1814</span>
+                        <span class="meta-item"><i class="fas fa-file-alt"></i> Multiple</span>
+                        <span class="meta-item"><i class="fas fa-users"></i> 185 Diputados</span>
+                    </div>
+                    <p>Registro completo de las sesiones parlamentarias. Debates, votaciones y discursos que dieron forma a la primera constitución liberal española.</p>
+                    <a href="https://www.congreso.es/web/guest/historia-constitucional" class="btn-download" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Acceder al Archivo
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <h3 class="document-title">Correspondencia de los Diputados</h3>
+                    <div class="document-meta">
+                        <span class="meta-item"><i class="fas fa-envelope"></i> Cartas</span>
+                        <span class="meta-item"><i class="fas fa-globe-americas"></i> América-España</span>
+                        <span class="meta-item"><i class="fas fa-history"></i> Digitalizado</span>
+                    </div>
+                    <p>Cartas personales de los diputados americanos y peninsulares. Testimonios únicos del proceso constituyente desde perspectivas personales.</p>
+                    <a href="https://www.bibliotecadigitalhispanica.bne.es/" class="btn-download" target="_blank">
+                        <i class="fas fa-eye"></i> Ver Colección Digital
+                    </a>
+                </div>
+
+                <div class="document-card">
+                    <h3 class="document-title">Influencia en Constituciones Americanas</h3>
+                    <div class="document-meta">
+                        <span class="meta-item"><i class="fas fa-balance-scale"></i> Comparativo</span>
+                        <span class="meta-item"><i class="fas fa-flag"></i> 18 Países</span>
+                        <span class="meta-item"><i class="fas fa-chart-bar"></i> Análisis</span>
+                    </div>
+                    <p>Estudio detallado de la adopción de principios gaditanos en las constituciones de Argentina, Chile, Perú, Bolivia, Uruguay y otros países.</p>
+                    <a href="https://dialnet.unirioja.es/" class="btn-download" target="_blank">
+                        <i class="fas fa-book-open"></i> Buscar en Dialnet
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva sección de eventos -->
+        <section id="eventos" class="events-section">
+            <div class="section-header">
+                <h2 class="section-title">Próximos Eventos</h2>
+                <p class="section-subtitle">
+                    Participa en nuestras actividades culturales y educativas
+                </p>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">15</div>
+                        <div class="event-month">Sept</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Conferencia: El Legado de La Pepa</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i> 18:00 - 20:00
+                        </div>
+                        <p class="event-description">
+                            El Dr. Carlos Martínez Shaw analizará la influencia de la Constitución de 1812 en las independencias americanas.
+                        </p>
+                        <a href="mailto:info@cadiz.es?subject=Reserva%20Conferencia%20La%20Pepa" class="btn-event">
+                            <i class="fas fa-ticket-alt"></i> Reservar Entrada
+                        </a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">22</div>
+                        <div class="event-month">Sept</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Taller Escolar: Construyendo Democracia</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i> 10:00 - 13:00
+                        </div>
+                        <p class="event-description">
+                            Actividad práctica para estudiantes donde crearán su propia constitución basada en principios gaditanos.
+                        </p>
+                        <a href="mailto:info@cadiz.es?subject=Reserva%20Taller%20Democracia" class="btn-event">
+                            <i class="fas fa-ticket-alt"></i> Reservar Entrada
+                        </a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">28</div>
+                        <div class="event-month">Sept</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Visita Guiada: Documentos Originales</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i> 17:00 - 18:30
+                        </div>
+                        <p class="event-description">
+                            Recorrido especial con acceso a documentos originales de las Cortes de Cádiz conservados en nuestra cámara acorazada.
+                        </p>
+                        <a href="mailto:info@cadiz.es?subject=Reserva%20Visita%20Documentos" class="btn-event">
+                            <i class="fas fa-ticket-alt"></i> Reservar Entrada
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visita Virtual -->
+        <section id="visita-virtual" class="virtual-tour">
+            <div class="tour-content">
+                <h2 class="tour-title">Recorrido Virtual 360°</h2>
+                <p class="tour-description">
+                    Explora el museo desde cualquier lugar del mundo con nuestra experiencia inmersiva 
+                    de realidad virtual. Descubre las salas, documentos y exposiciones con tecnología de vanguardia.
+                </p>
+
+                <div class="tour-features">
+                    <div class="tour-feature">
+                        <div class="feature-icon">🏛️</div>
+                        <h4>Salas Históricas</h4>
+                        <p>Recorre las 8 salas del museo con detalle 4K</p>
+                    </div>
+                    <div class="tour-feature">
+                        <div class="feature-icon">📱</div>
+                        <h4>Multiplataforma</h4>
+                        <p>Compatible con PC, móvil y gafas VR</p>
+                    </div>
+                    <div class="tour-feature">
+                        <div class="feature-icon">🎧</div>
+                        <h4>Audio Guía</h4>
+                        <p>Narración profesional en 4 idiomas</p>
+                    </div>
+                    <div class="tour-feature">
+                        <div class="feature-icon">📚</div>
+                        <h4>Contenido Interactivo</h4>
+                        <p>Información detallada al hacer clic</p>
+                    </div>
+                </div>
+
+                <a href="https://www.cadiz.es/" class="btn-tour" target="_blank">
+                    <i class="fas fa-play"></i> Iniciar Visita Virtual
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chat mejorado con inteligencia -->
+    <div class="ai-assistant">
+        <button class="ai-toggle" id="chatToggle">
+            <i class="fas fa-comment-alt"></i>
+        </button>
+        
+        <div class="ai-chat" id="chatWindow">
+            <div class="ai-header">
+                <h4><i class="fas fa-landmark"></i> Asistente Constitucional</h4>
+                <button class="ai-close" id="chatClose">✕</button>
+            </div>
+            
+            <div class="ai-messages" id="chatMessages">
+                <div class="ai-message bot">
+                    <div class="message-bubble">
+                        ¡Hola! Soy tu asistente virtual del Museo Constitucional de Cádiz. ¿En qué puedo ayudarte hoy?
+                    </div>
+                </div>
+                <div class="ai-message bot">
+                    <div class="message-bubble">
+                        Puedes preguntarme sobre:
+                        <br>• Historia de la Constitución de 1812
+                        <br>• Horarios y precios de entrada
+                        <br>• Documentos históricos disponibles
+                        <br>• Próximos eventos y exposiciones
+                    </div>
+                </div>
+                <div class="ai-message bot">
+                    <div class="message-bubble">
+                        <div class="quick-questions">
+                            <button class="quick-question" data-question="¿Cuál es el horario del museo?">Horarios</button>
+                            <button class="quick-question" data-question="¿Cuánto cuesta la entrada?">Precios</button>
+                            <button class="quick-question" data-question="¿Qué documentos históricos tienen?">Documentos</button>
+                            <button class="quick-question" data-question="¿Qué eventos hay próximamente?">Eventos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-input-area">
+                <div class="ai-input-group">
+                    <input type="text" class="ai-input" id="chatInput" placeholder="Escribe tu pregunta...">
+                    <button class="ai-send" id="chatSend"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="museum-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Información del Museo</h3>
+                <ul class="footer-links">
+                    <li><a href="https://maps.google.com/maps?q=Plaza+de+San+Antonio,+11001+Cádiz" target="_blank"><i class="fas fa-map-marker-alt"></i> Plaza de San Antonio, 11001 Cádiz</a></li>
+                    <li><a href="tel:+34956224765"><i class="fas fa-phone"></i> +34 956 224 765</a></li>
+                    <li><a href="mailto:info@cadiz.es"><i class="fas fa-envelope"></i> info@cadiz.es</a></li>
+                    <li><a href="https://www.cadiz.es/" target="_blank"><i class="fas fa-clock"></i> Mar-Dom 10:00-18:00</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Recursos Digitales</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.congreso.es/constitucion/ficheros/historicas/cons_1812.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Constitución 1812 (PDF)</a></li>
+                    <li><a href="https://www.congreso.es/web/guest/historia-constitucional" target="_blank"><i class="fas fa-archive"></i> Archivo Digital Completo</a></li>
+                    <li><a href="https://www.cadiz.es/" target="_blank"><i class="fas fa-vr-cardboard"></i> Información del Museo</a></li>
+                    <li><a href="https://www.juntadeandalucia.es/cultura/" target="_blank"><i class="fas fa-mobile-alt"></i> Junta de Andalucía</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Colaboradores</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.congreso.es/" target="_blank"><i class="fas fa-landmark"></i> Congreso de los Diputados</a></li>
+                    <li><a href="https://www.cadiz.es/" target="_blank"><i class="fas fa-city"></i> Ayuntamiento de Cádiz</a></li>
+                    <li><a href="https://www.uca.es/" target="_blank"><i class="fas fa-university"></i> Universidad de Cádiz</a></li>
+                    <li><a href="https://www.dipucadiz.es/" target="_blank"><i class="fas fa-globe"></i> Diputación de Cádiz</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Museo Constitucional de Cádiz | Fundación 1812</p>
+            <p>Preservando 213 años de legado constitucional español | 42 constituciones mundiales influidas</p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuración de la API de IA
+        const AI_CONFIG = {
+            apiUrl: "http://aichat.nowtechai.com/now/v1/ai",
+            apiKey: "1MgaZ+PJtlxqOClRZ32VIVY16K8PmFoR0zi5NGsGjyJGZ5dlKshNEfPb/yAbrvQ9Ulr22mbMLiuk21T1j8CN0Q==",
+            headers: {
+                'Accept': 'application/json',
+                'Accept-Charset': 'UTF-8',
+                'User-Agent': 'Ktor client',
+                'Accept-Encoding': 'gzip',
+                'Content-Type': 'application/json'
+            }
+        };
+
+        // Clase para manejar la API de IA
+        class AIService {
+            constructor(config) {
+                this.config = config;
+            }
+
+            async generateResponse(prompt) {
+                try {
+                    const timestamp = Date.now().toString();
+                    
+                    const headers = {
+                        ...this.config.headers,
+                        'Key': this.config.apiKey,
+                        'TimeStamps': timestamp
+                    };
+
+                    const requestBody = {
+                        contents: [
+                            {
+                                role: "system",
+                                content: "Eres un asistente experto del Museo Constitucional de Cádiz. Tienes conocimiento profundo sobre la Constitución de 1812, historia española, las Cortes de Cádiz, y el constitucionalismo. Responde de manera informativa, educativa y amigable. Mantén tus respuestas concisas pero completas."
+                            },
+                            {
+                                role: "user",
+                                content: prompt
+                            }
+                        ]
+                    };
+
+                    const response = await fetch(this.config.apiUrl, {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify(requestBody)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const responseData = await response.text();
+                    return this.extractContentFromResponse(responseData);
+
+                } catch (error) {
+                    console.error('Error en la solicitud de IA:', error);
+                    return this.getFallbackResponse(prompt);
+                }
+            }
+
+            extractContentFromResponse(responseData) {
+                let contentBuilder = '';
+                const lines = responseData.split('data:');
+                
+                for (const line of lines) {
+                    try {
+                        const trimmedLine = line.trim();
+                        if (trimmedLine && trimmedLine !== '[DONE]') {
+                            const data = JSON.parse(trimmedLine);
+                            if (data.content) {
+                                contentBuilder += data.content;
+                            }
+                        }
+                    } catch (error) {
+                        // Ignorar errores de parsing individual
+                        continue;
+                    }
+                }
+                
+                return contentBuilder || this.getFallbackResponse();
+            }
+
+            getFallbackResponse(prompt = '') {
+                // Respuestas de fallback basadas en palabras clave
+                const lowerPrompt = prompt.toLowerCase();
+                
+                if (lowerPrompt.includes('horario') || lowerPrompt.includes('hora')) {
+                    return "El museo está abierto de martes a domingo de 10:00 a 18:00 horas. Los lunes permanece cerrado por mantenimiento.";
+                }
+                
+                if (lowerPrompt.includes('precio') || lowerPrompt.includes('entrada') || lowerPrompt.includes('coste')) {
+                    return "La entrada al Museo Constitucional de Cádiz es completamente gratuita para todos los visitantes.";
+                }
+                
+                if (lowerPrompt.includes('ubicación') || lowerPrompt.includes('dirección') || lowerPrompt.includes('dónde')) {
+                    return "El museo se encuentra en la Plaza de San Antonio, 11001 Cádiz. Puedes llegar fácilmente en transporte público o a pie desde el centro histórico.";
+                }
+                
+                if (lowerPrompt.includes('constitución') || lowerPrompt.includes('1812') || lowerPrompt.includes('pepa')) {
+                    return "La Constitución de 1812, conocida como 'La Pepa', fue promulgada el 19 de marzo de 1812. Estableció por primera vez en España principios liberales como la soberanía nacional, la separación de poderes y la libertad de imprenta.";
+                }
+                
+                if (lowerPrompt.includes('evento') || lowerPrompt.includes('actividad')) {
+                    return "Tenemos varios eventos próximos: conferencias sobre el legado constitucional, talleres educativos para estudiantes y visitas guiadas especiales. Puedes reservar enviando un email a info@cadiz.es";
+                }
+                
+                return "Disculpa, en este momento no puedo procesar tu consulta. Por favor, contacta con nosotros en el +34 956 224 765 o info@cadiz.es para más información sobre el museo.";
+            }
+        }
+
+        // Inicializar el servicio de IA
+        const aiService = new AIService(AI_CONFIG);
+
+        // Datos del museo para respuestas rápidas
+        const museumInfo = {
+            horario: "El museo está abierto de martes a domingo de 10:00 a 18:00 horas. Los lunes permanece cerrado.",
+            precio: "La entrada al museo es gratuita para todos los visitantes.",
+            documentos: "Tenemos más de 5,000 documentos digitalizados, incluyendo la Constitución original de 1812, actas de las Cortes de Cádiz, correspondencia de diputados y estudios sobre su influencia internacional.",
+            eventos: "Próximos eventos: \n- 15 Sept: Conferencia sobre el legado de La Pepa\n- 22 Sept: Taller escolar 'Construyendo Democracia'\n- 28 Sept: Visita guiada a documentos originales",
+            ubicacion: "Estamos ubicados en la Plaza de San Antonio, 11001 Cádiz. Puedes llegar en transporte público: líneas de autobús 1, 2, 5 y 7.",
+            contacto: "Teléfono: +34 956 224 765\nEmail: info@cadiz.es\nSitio web: www.cadiz.es"
+        };
+
+        // Elementos del DOM
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatSend = document.getElementById('chatSend');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Estado del chat
+        let isLoading = false;
+
+        // Función para agregar mensajes al chat
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('ai-message');
+            messageDiv.classList.add(isUser ? 'user' : 'bot');
+            
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.classList.add('message-bubble');
+            bubbleDiv.textContent = text;
+            
+            messageDiv.appendChild(bubbleDiv);
+            chatMessages.appendChild(messageDiv);
+            
+            // Scroll al último mensaje
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Función para mostrar indicador de escribiendo
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('ai-message', 'bot');
+            typingDiv.id = 'typing-indicator';
+            
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.classList.add('message-bubble');
+            bubbleDiv.innerHTML = `
+                <div class="typing-indicator">
+                    <span>Escribiendo</span>
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            
+            typingDiv.appendChild(bubbleDiv);
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Función para ocultar indicador de escribiendo
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // Función principal para enviar mensaje
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message && !isLoading) {
+                isLoading = true;
+                chatSend.disabled = true;
+                
+                // Agregar mensaje del usuario
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Mostrar indicador de escribiendo
+                showTypingIndicator();
+                
+                try {
+                    // Usar la API de IA
+                    const response = await aiService.generateResponse(message);
+                    
+                    // Ocultar indicador y mostrar respuesta
+                    hideTypingIndicator();
+                    addMessage(response);
+                    
+                } catch (error) {
+                    hideTypingIndicator();
+                    addMessage("Disculpa, hubo un problema al procesar tu consulta. Por favor, inténtalo de nuevo o contacta con nosotros.");
+                    console.error('Error al enviar mensaje:', error);
+                } finally {
+                    isLoading = false;
+                    chatSend.disabled = false;
+                }
+            }
+        }
+
+        // Event listeners del chat
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('open');
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('open');
+        });
+
+        chatSend.addEventListener('click', sendMessage);
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Manejar preguntas rápidas
+        function handleQuickQuestion() {
+            const question = this.getAttribute('data-question');
+            chatInput.value = question;
+            sendMessage();
+        }
+
+        // Asignar eventos a preguntas rápidas existentes
+        document.querySelectorAll('.quick-question').forEach(button => {
+            button.addEventListener('click', handleQuickQuestion);
+        });
+
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navegación activa
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animaciones de entrada
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        document.querySelectorAll('.resource-card, .document-card, .event-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Contador animado para estadísticas
+        function animateNumbers() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent.replace(/\D/g, ''));
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (stat.textContent.includes('+')) {
+                        stat.textContent = Math.floor(current).toLocaleString() + '+';
+                    } else {
+                        stat.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 30);
+            });
+        }
+
+        // Activar contador cuando sea visible
+        const heroStats = document.querySelector('.hero-stats');
+        const statsObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        statsObserver.disconnect();
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        if (heroStats) {
+            statsObserver.observe(heroStats);
+        }
+
+        // Efecto hover mejorado para tarjetas
+        document.querySelectorAll('.resource-card, .document-card, .event-card, .tour-feature').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Cerrar chat al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!chatWindow.contains(e.target) && !chatToggle.contains(e.target) && chatWindow.classList.contains('open')) {
+                chatWindow.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
